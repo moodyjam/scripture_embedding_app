@@ -16,21 +16,6 @@ def main_app():
     Render the main application content for logged-in users.
     """
     client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    
-    def process_logout():
-        """
-        Process the logout action.
-        Resets 'logged_in' and 'username' in session state.
-        """
-        st.session_state['logged_in'] = False
-        st.session_state['username'] = ''
-        # Optionally, clear error/success messages
-        if 'login_error' in st.session_state:
-            del st.session_state['login_error']
-        if 'register_error' in st.session_state:
-            del st.session_state['register_error']
-        if 'register_success' in st.session_state:
-            del st.session_state['register_success']
 
     def get_embedding(text, model="text-embedding-3-small"):
         """
@@ -180,9 +165,6 @@ def main_app():
                             st.markdown(f"**Similarity:** `{similarity:.4f}`")
                         st.markdown(f"_{verse_text}_")
                         st.markdown("---")
-
-    # Logout Button
-    st.button("Logout", on_click=process_logout, key="logout_button")
                     
 if __name__ == '__main__':
     main_app()

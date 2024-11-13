@@ -180,6 +180,28 @@ def login_or_register():
         login()
     else:
         register()
+        
+def main_app_w_logout():
+    
+    def process_logout():
+        """
+        Process the logout action.
+        Resets 'logged_in' and 'username' in session state.
+        """
+        st.session_state['logged_in'] = False
+        st.session_state['username'] = ''
+        # Optionally, clear error/success messages
+        if 'login_error' in st.session_state:
+            del st.session_state['login_error']
+        if 'register_error' in st.session_state:
+            del st.session_state['register_error']
+        if 'register_success' in st.session_state:
+            del st.session_state['register_success']
+            
+    main_app()
+    
+    # Logout Button
+    st.button("Logout", on_click=process_logout, key="logout_button")
 
 # ========================================
 # Run the Streamlit App
@@ -189,7 +211,7 @@ def run_app():
     Determine which UI to display based on the user's login state.
     """
     if st.session_state['logged_in']:
-        main_app()
+        main_app_w_logout()
     else:
         login_or_register()
 
