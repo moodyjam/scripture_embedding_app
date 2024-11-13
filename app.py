@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import openai
 import os
-from openai import OpenAI
 
 # Set OpenAI API key
 # openai.api_key = os.getenv("OPENAI_API_KEY")
