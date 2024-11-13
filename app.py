@@ -14,7 +14,8 @@ def main_app():
     """
     Render the main application content for logged-in users.
     """
-    client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    # client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     def get_embedding(text, model="text-embedding-3-small"):
         """

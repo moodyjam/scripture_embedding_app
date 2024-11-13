@@ -6,3 +6,5 @@
 
 # Except requirements.txt
 !requirements.txt
+
+.streamlit/secrets.toml
